@@ -6,7 +6,7 @@ We inspired these from all knew protocols like Bluetooth, Wi-Fi, and other;
 
 To have basic communication, User will have UI:
 1.	For PC’s – a terminal exe file (Uses UART).
-2.	For Mobiles – An App type (Connected over Bluetooth), which is connected to STM.
+2.	For Mobiles – An App type thing (Connected over Bluetooth), which is connected to STM via bluetooth module ( hc-05 ).
 User will get a List of available peers/nodes, where he can select a node to chat with. When a node is selected, the stm will create a session by exchanging keys and store it in a structure/array.  Then, User will get interface for chatting, with a textbox at bottom of screen. Message sent are encrypted by the key which is stored in a structure.
 On receiving side, receiver will decrypt message and show it to user.
 
