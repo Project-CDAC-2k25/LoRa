@@ -72,7 +72,11 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 LoRa myLoRa;
+struct NodeManager {
+	uint8_t NoofNodesPresent;
+	NodeList Nodes[10];	//Can handle only ten peers
 
+}nm={0};
 uint8_t rx_buf[150] = {0};
 uint8_t packetReceivedFlag,sendACK,sendBcast,rlen;
 /* USER CODE END PV */
@@ -262,7 +266,7 @@ int main(void)
   HAL_TIM_OC_Start_IT(&htim3,TIM_CHANNEL_1);
 
 
-
+//---------Just for testing--
   uint8_t msg[]="Hello B !";
   Packet sp={0};
   sp.sourId=THIS_NODE;
@@ -284,6 +288,28 @@ int main(void)
 	    	  printf("Error occured in Deserializing");
 	    	  break;
 	      }
+
+	      if(rxpckt.destId==0xFF){
+
+	    	  register uint8_t temp=nm.NoofNodesPresent;
+	    	  register uint8_t peeralreadyexist=0;
+	    	  for(  uint8_t i=0; i < temp ;i++){
+	    		  if(nm.Nodes[i].Node_ID==rxpckt.sourId){
+	    			  peeralreadyexist=1;
+	    		  }
+	    	  }
+
+	    	  if(peeralreadyexist){ //If Peer Exist, Update the time by Hal_ticks, which is in milli's ;
+	    		  nm.Nodes[temp].lastseen=HAL_GetTick();
+	    	  }
+	    	  else{
+	    		  nm.Nodes[temp].lastseen=HAL_GetTick();
+	    		  nm.Nodes[temp].Node_ID=rxpckt.sourId;
+	    		  nm.Nodes[temp].RSSI=LoRa_getRSSI(&myLoRa);
+	    		  nm.NoofNodesPresent++;
+	    	  }
+	      }
+
 	      switch(rxpckt.control){
 
 	      case 0:		// data received
@@ -299,8 +325,10 @@ int main(void)
 	    	  break;
 	      case 0xF: //its a broad cast mesg ( thinking to imlement in Mesh type )
 	    	  //sHOULD SAVE IT TO PEERLIST
-	    	  break;
+	      	  {
 
+	    	  break;
+	      	  }
 	      }
 
 	  }
