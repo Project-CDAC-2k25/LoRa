@@ -112,13 +112,14 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 	//Timer Callbacks;
 	if(htim==&htim4){
 		// TIM4 for ack and general purpose
+
 	}else if(&htim3==htim){
 		sendBcast=1;
 	}
 }
 
 uint8_t validate_packet(Packet *recv){
-	if((recv->destId==THIS_NODE)||(recv->destId==0xFF))
+	if((recv->destId==THIS_NODE)||(recv->destId==0xFF))	// FF mean its a Broadcast
 		return 0;
 	return 1;
 }
@@ -276,7 +277,7 @@ int main(void)
   Packet rxpckt;
   while (1)
   {
-	  if (packetReceivedFlag)
+	  if(packetReceivedFlag)
 	  {
 	      packetReceivedFlag = 0;  // clear flag
 	      if(deserializePacket(rx_buf, rlen, &rxpckt) || validate_packet(&rxpckt)){
@@ -292,7 +293,7 @@ int main(void)
 	      case 1:		//Its a ACK
 	    	  // remove from Queue;
 	    	  break;
-	      case 2:		//Its a NACK
+	      case 2:		//Its a NACK, so should re-transmitt the packet.
 	    	  break;
 	      case 3:		//its CONN req
 	    	  break;
