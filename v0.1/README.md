@@ -15,3 +15,17 @@ As of now, we are just focussed on unfragmented frames.
 
 We added uart commands and other related functions with UART which used in communication between STM and UI ( APPP ).
 All commands are terminated with souble semicolon ;; . 
+
+Upon search , found a software which can be used to debug our UI python file. Found that we can create a pair of virtual ports,  and test the py file with our UART serial commands.
+
+12.8.25
+
+Mock Interview Day , Did Nothing. 
+Thought to Debug UI's exe file but its became late when i reached my place, Tired and postponed to Next day.
+
+13.8.25 
+
+Iinstall the com0com by sourceforge; Link is given below.
+Facing Driver issue and other. If i can manage this by today , i can debug py file like how its responding to our UART commands and so on.
+
+https://sourceforge.net/projects/com0com/files/com0com/
