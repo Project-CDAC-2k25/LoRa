@@ -65,3 +65,7 @@ If user wants to start a convo with a node
      TYPE:CONN;ID:<NODE ID>;		//This will start stm to make a connection request. ( key exchanges)
 
  	
+
+We also used python to create UI for sending messages which works works as serial emulator like hercules 
+uses pyQt5 and other serial library etc
+
