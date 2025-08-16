@@ -29,3 +29,20 @@ Iinstall the com0com by sourceforge; Link is given below.
 Facing Driver issue and other. If i can manage this by today , i can debug py file like how its responding to our UART commands and so on.
 
 https://sourceforge.net/projects/com0com/files/com0com/
+com0com is not installing properly , so searched for an alternatives and found other one and used it.
+
+14.8.25
+
+Added debug console directly into the py app , such that there will be less serial com apps like hercules and see all the printf ( serial messages ) in that console;
+
+15.8.25
+
+Finally, tried an bare skelton model of this. 
+after trying we getinng messages and ack back and are well according to logic we written in stm.
+we got message from other message from user in my screen but next the program strucked and dont know whwt happen and also wanted to reset controller every time , and after few tries the messages didnt even came to me;
+ 
+somewhere felt like we need to implment receive buffer/queue too for receving . it might be the one of the reason for it;
+
+but i thought our implemwntation might be slow due to super main loop implementation, instead of RTOS. and i read the difference befeore but felt it live today .
+we predicted it atfirst itself, but we wanna do it purely on stm supermain loop and make it efficient; will seee what happens !
+
