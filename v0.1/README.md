@@ -46,3 +46,20 @@ somewhere felt like we need to implment receive buffer/queue too for receving . 
 but i thought our implemwntation might be slow due to super main loop implementation, instead of RTOS. and i read the difference befeore but felt it live today .
 we predicted it atfirst itself, but we wanna do it purely on stm supermain loop and make it efficient; will seee what happens !
 
+16.8.25
+
+Tested our bare skeleton output, ok messages are successfully sending and gettting acknowledged by receiver.
+we have a little output to show.
+
+17.8.25
+
+
+19.8.25 
+
+pre-placement talk - did nothing ;
+started prep for written test.
+
+20.8.25 
+
+CDAC writtne test and project op shown today to out mentor with just two peers;
+
